@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1026"/><stop offset=".55" stop-color="#241844"/><stop offset="1" stop-color="#080914"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#fff3bd" stop-opacity=".9"/><stop offset="1" stop-color="#f2c66d" stop-opacity="0"/></radialGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1200" height="700" fill="url(#bg)"/>
+<circle cx="600" cy="360" r="250" fill="url(#glow)" filter="url(#blur)"/>
+<g fill="#fff7cf" opacity=".7"><circle cx="120" cy="110" r="2"/><circle cx="230" cy="180" r="1.5"/><circle cx="1010" cy="130" r="2"/><circle cx="920" cy="220" r="1.5"/><circle cx="1080" cy="390" r="1.5"/></g>
+<!-- open Bible -->
+<path d="M250 485 Q420 420 600 485 Q780 420 950 485 L950 600 Q775 545 600 610 Q425 545 250 600Z" fill="#e8d6aa" stroke="#b58b4b" stroke-width="5"/>
+<path d="M600 485 Q600 545 600 610" stroke="#8e6939" stroke-width="4"/>
+<g stroke="#b59a70" stroke-width="3" opacity=".7"><path d="M300 500 Q430 460 565 505"/><path d="M300 525 Q430 485 565 530"/><path d="M635 505 Q770 460 900 500"/><path d="M635 530 Q770 485 900 525"/></g>
+<!-- cross -->
+<rect x="574" y="165" width="52" height="260" rx="8" fill="#d6b36b"/>
+<rect x="500" y="230" width="200" height="48" rx="8" fill="#d6b36b"/>
+<text x="600" y="655" text-anchor="middle" fill="#f3dfaa" font-family="Georgia,serif" font-size="27" letter-spacing="5">FAITH • THEOLOGY • TRUTH</text>
+</svg>

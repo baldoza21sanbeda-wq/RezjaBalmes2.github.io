@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rezja Balmes | Blog</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Parisienne&display=swap"
+          rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        botanical: {
+                            black: '#171126',
+                            dark: '#24183f',
+                            card: '#2f2050',
+                            border: '#5b467d',
+                            muted: '#c8bdd9',
+                            rose: '#c084d8',
+                            gold: '#f5c76b',
+                            cream: '#fff4cf',
+                            lavender: '#9b7bd3',
+                            purple: '#6d4aa8',
+                            night: '#120d21',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0c0a09;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #44403c;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716c;
+        }
+
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(155,123,211,.18),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(245,199,107,.10),
+                    transparent 24%
+                ),
+                linear-gradient(
+                    135deg,
+                    #171126 0%,
+                    #120d21 55%,
+                    #24183f 100%
+                );
+        }
+
+        .font-cinzel {
+            letter-spacing: .08em;
+        }
+
+        .rapunzel-script {
+            font-family: 'Parisienne', cursive;
+        }
+
+        .twilight-glow {
+            box-shadow:
+                0 0 45px rgba(155,123,211,.14),
+                0 18px 60px rgba(18,13,33,.5);
+        }
+
+        .lantern-glow {
+            box-shadow:
+                0 0 18px rgba(245,199,107,.35);
+        }
+
+        .rapunzel-vine {
+            position: relative;
+        }
+
+        .rapunzel-vine::after {
+            content: '✦  ✧  ✦';
+            position: absolute;
+            right: 0;
+            bottom: -22px;
+            color: rgba(245,199,107,.45);
+            font-size: 12px;
+            letter-spacing: .45em;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(
+                    circle at 50% 8%,
+                    rgba(245,199,107,.10),
+                    transparent 16%
+                ),
+                radial-gradient(
+                    circle at 8% 70%,
+                    rgba(155,123,211,.12),
+                    transparent 20%
+                ),
+                radial-gradient(
+                    circle at 92% 78%,
+                    rgba(155,123,211,.10),
+                    transparent 20%
+                );
+        }
+
+        main,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lantern-field {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 13px;
+            height: 18px;
+            border-radius: 45% 45% 50% 50%;
+            background:
+                radial-gradient(
+                    circle,
+                    #fff7c7 0%,
+                    #f5c76b 38%,
+                    rgba(245,199,107,.15) 72%,
+                    transparent 75%
+                );
+            box-shadow:
+                0 0 18px rgba(245,199,107,.75),
+                0 0 42px rgba(245,199,107,.25);
+            opacity: .72;
+            animation: floatLantern 9s ease-in-out infinite;
+        }
+
+        .lantern::before {
+            content: '';
+            position: absolute;
+            left: 3px;
+            right: 3px;
+            top: -5px;
+            height: 7px;
+            border: 1px solid rgba(245,199,107,.5);
+            border-bottom: 0;
+            border-radius: 50%;
+        }
+
+        .lantern:nth-child(1) { left: 8%; top: 20%; animation-delay: -2s; transform: scale(.7); }
+        .lantern:nth-child(2) { left: 18%; top: 48%; animation-delay: -6s; transform: scale(.5); }
+        .lantern:nth-child(3) { right: 11%; top: 25%; animation-delay: -4s; transform: scale(.8); }
+        .lantern:nth-child(4) { right: 21%; top: 58%; animation-delay: -1s; transform: scale(.55); }
+        .lantern:nth-child(5) { left: 45%; top: 14%; animation-delay: -7s; transform: scale(.45); }
+        .lantern:nth-child(6) { right: 5%; top: 75%; animation-delay: -3s; transform: scale(.45); }
+
+        @keyframes floatLantern {
+            0%, 100% { margin-top: 0; opacity: .42; }
+            50% { margin-top: -22px; opacity: .85; }
+        }
+
+        .starfield {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: .6;
+            background-image:
+                radial-gradient(circle, rgba(255,248,210,.75) 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(196,174,255,.55) 1px, transparent 1.5px);
+            background-size: 73px 91px, 121px 137px;
+            background-position: 13px 17px, 51px 33px;
+        }
+
+        .border-stone-800,
+        .border-stone-700\/60 {
+            border-color: rgba(126,92,167,.38) !important;
+        }
+
+        .text-stone-300 { color: #d8cee8 !important; }
+        .text-stone-400 { color: #b9aecb !important; }
+        .text-stone-500 { color: #9486aa !important; }
+        .bg-stone-900 { background-color: rgba(36,24,63,.82) !important; }
+        .bg-stone-950 { background-color: #120d21 !important; }
+
+        .text-amber-100, .text-yellow-100 { color: #fff1bd !important; }
+        .text-amber-200, .text-yellow-200 { color: #f8d77f !important; }
+        .text-amber-300 { color: #f5c76b !important; }
+
+        .bg-amber-100 {
+            background: linear-gradient(135deg, #fff4cf, #f5c76b) !important;
+        }
+
+        .hover\:bg-amber-200:hover {
+            background: linear-gradient(135deg, #fff8dc, #f8d77f) !important;
+        }
+
+        #posts-grid article {
+            background: linear-gradient(145deg, rgba(47,32,80,.86), rgba(24,16,43,.92)) !important;
+            border-color: rgba(126,92,167,.38) !important;
+            box-shadow: 0 18px 50px rgba(10,6,20,.28);
+        }
+
+        #posts-grid article:hover {
+            border-color: rgba(245,199,107,.55) !important;
+            box-shadow: 0 0 30px rgba(155,123,211,.13), 0 18px 55px rgba(10,6,20,.35);
+        }
+
+        #subscribe {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(155,123,211,.14), transparent 45%),
+                linear-gradient(180deg, rgba(36,24,63,.96), rgba(18,13,33,.98)) !important;
+        }
+
+        footer {
+            background: linear-gradient(180deg, #120d21, #0d0918) !important;
+        }
+
+        #hero-img {
+            box-shadow: 0 0 45px rgba(155,123,211,.12), 0 24px 70px rgba(10,6,20,.45);
+        }
+
+        #article-modal {
+            background: rgba(7,4,15,.88) !important;
+        }
+
+        #article-modal #modal-content {
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        #article-modal #modal-content p {
+            text-indent: 2em;
+            margin-bottom: 1.25rem;
+        }
+
+        @media (max-width: 640px) {
+            #article-modal #modal-content {
+                font-size: .94rem;
+                line-height: 1.8;
+            }
+
+            #article-modal #modal-content p {
+                text-indent: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-botanical-black text-purple-50 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- FLOATING AUDIO WIDGET -->
+    <div class="fixed bottom-6 right-6 z-50 flex items-center bg-botanical-dark/90 border border-purple-900/80 px-4 py-2 rounded-full shadow-2xl backdrop-blur-md text-xs text-yellow-100 twilight-glow">
+        <button id="bg-music-btn" class="flex items-center space-x-2 focus:outline-none hover:text-amber-300 transition-colors">
+            <i id="music-icon" class="fa-solid fa-music text-amber-300"></i>
+            <span id="music-text" class="font-mono tracking-wider">Play Music</span>
+        </button>
+    </div>
+
+    <!-- AUDIO ELEMENT -->
+    <audio id="bg-audio" loop preload="auto">
+        <source src="./i_see_the_light.mp3" type="audio/mpeg">
+        <source src="i_see_the_light.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="starfield"></div>
+
+    <div class="lantern-field" aria-hidden="true">
+        <span class="lantern"></span>
+        <span class="lantern"></span>
+        <span class="lantern"></span>
+        <span class="lantern"></span>
+        <span class="lantern"></span>
+        <span class="lantern"></span>
+    </div>
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 bg-botanical-night/90 backdrop-blur-md border-b border-purple-900/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="group flex flex-col">
+                <span class="text-xs uppercase tracking-widest font-mono text-yellow-100 group-hover:text-yellow-200 transition-colors">
+                    releasedbyrezja
+                </span>
+                <span class="text-[10px] uppercase tracking-[0.25em] text-stone-400 -mt-1">
+                    BLOG
+                </span>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-medium text-stone-400">
+                <a href="#about" class="hover:text-yellow-200 transition-colors">About</a>
+                <a href="#blogs" class="hover:text-yellow-200 transition-colors">Blog</a>
+                <a href="#subscribe" class="hover:text-yellow-200 transition-colors">Subscribe</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button id="search-btn" class="p-2 text-stone-400 hover:text-white transition-colors focus:outline-none" title="Search blog">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </button>
+
+                <a href="#subscribe" class="hidden sm:inline-block px-4 py-2 border border-stone-700 hover:border-amber-400/60 text-xs uppercase tracking-widest text-yellow-100 hover:text-amber-300 transition-all rounded-sm">
+                    Subscribe
+                </a>
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-stone-400 hover:text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-b border-stone-800 bg-botanical-dark px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block text-xs uppercase tracking-widest text-stone-300 hover:text-white py-1">About</a>
+            <a href="#blogs" class="block text-xs uppercase tracking-widest text-stone-300 hover:text-white py-1">Blog</a>
+            <a href="#subscribe" class="inline-block mt-2 px-4 py-2 border border-stone-700 text-xs uppercase tracking-widest text-stone-200">Subscribe</a>
+        </div>
+    </header>
+
+    <!-- SEARCH BAR -->
+    <div id="search-bar" class="hidden bg-botanical-dark border-b border-purple-900/60 py-4 px-4 transition-all">
+        <div class="max-w-3xl mx-auto flex items-center space-x-3">
+            <i class="fa-solid fa-magnifying-glass text-stone-500"></i>
+            <input type="text" id="search-input" placeholder="Search blogs by title or keyword..." class="w-full bg-transparent border-none text-white text-sm focus:outline-none placeholder-stone-600">
+            <button id="close-search" class="text-stone-500 hover:text-white text-sm">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+
+        <!-- HERO / ABOUT SECTION -->
+        <section id="about" class="grid md:grid-cols-12 gap-8 lg:gap-12 items-center pt-4">
+            <div class="md:col-span-6 relative group">
+                <div class="relative overflow-hidden rounded-sm border border-stone-700/60 shadow-2xl bg-stone-900">
+                    <img id="hero-img"
+                         src="./Eliz.jpg"
+                         alt="Rezja Antonia S. Balmes"
+                         class="twilight-glow w-full h-[520px] sm:h-[600px] object-cover object-top transform group-hover:scale-105 transition-all duration-700">
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-transparent opacity-70"></div>
+
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span class="rapunzel-script text-2xl text-yellow-200/80 block mb-1">
+                            Rezja Antonia S. Balmes
+                        </span>
+                        <p class="font-serif italic text-lg sm:text-xl text-stone-200">
+                            "Romans 8:18"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="absolute -bottom-3 -right-3 w-full h-full border border-purple-400/30 -z-10 rounded-sm pointer-events-none hidden sm:block"></div>
+            </div>            <div class="md:col-span-6 space-y-6">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-[0.3em] text-purple-300">
+                        Blog of a Marketista!
+                    </span>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-normal text-amber-50 mt-2 leading-tight">
+                        Hello, I'm <br>
+                        <span class="font-cinzel tracking-wider font-semibold text-white">
+                            Rezja Antonia S. Balmes
+                        </span>
+                    </h1>
+                </div>
+
+                <div class="space-y-4 text-stone-300 text-sm leading-relaxed font-light">
+                    <p>
+                        Welcome to my personal archive of blogs. I am a 1st-year Marketing Management student in San Beda College Alabang.
+                    </p>
+                    <p>
+                        This digital archive brings together my academic coursework, theological reflections, and personal blogs. Here, I explore themes of faith, family traditions, critical thinking, youth agnosticism, and life's enduring questions as I navigate both my academic journey and my spiritual growth.
+                    </p>
+                </div>
+
+                <div class="flex items-center space-x-4 pt-4 border-t border-stone-800">
+                    <a href="#blogs" class="px-6 py-3 bg-amber-100 text-purple-950 font-medium text-xs uppercase tracking-widest lantern-glow hover:bg-amber-200 transition-colors shadow-lg">
+                        Read Blog
+                    </a>
+                    <div class="flex items-center space-x-3 text-stone-400">
+                        <a href="#" class="w-9 h-9 rounded-full border border-stone-800 flex items-center justify-center hover:border-yellow-300 hover:text-white transition-all">
+                            <i class="fa-brands fa-instagram text-xs"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-stone-800 flex items-center justify-center hover:border-yellow-300 hover:text-white transition-all">
+                            <i class="fa-regular fa-envelope text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG SECTION -->
+        <section id="blogs" class="space-y-8 pt-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-stone-800 pb-6 gap-4">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.25em] text-purple-300">
+                        Writing Collection
+                    </span>
+                    <h2 class="font-cinzel text-2xl sm:text-3xl text-white mt-1">
+                        Blogs
+                    </h2>
+                    <div class="text-yellow-200/70 text-xs tracking-[0.6em] mt-2">
+                        ✦ · ✧ · ✦
+                    </div>
+                </div>
+                <div class="text-xs text-stone-400 uppercase tracking-widest font-mono">
+                    3 Published Blogs
+                </div>
+            </div>
+
+            <div id="posts-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Articles rendered by JavaScript -->
+            </div>
+        </section>
+
+        <!-- SUBSCRIBE SECTION -->
+        <section id="subscribe" class="bg-gradient-to-b from-botanical-dark to-botanical-night border border-purple-900/70 twilight-glow p-8 sm:p-12 text-center rounded-sm relative overflow-hidden">
+            <div class="max-w-xl mx-auto space-y-4 relative z-10">
+                <i class="fa-regular fa-paper-plane text-3xl text-amber-400/80"></i>
+                <h3 class="font-cinzel text-2xl sm:text-3xl text-white">
+                    Subscribe to Letters from Rezja
+                </h3>
+                <p class="text-xs sm:text-sm text-stone-400 leading-relaxed font-light">
+                    Receive new essays and written reflections directly in your inbox.
+                </p>
+                <form id="subscribe-form" class="flex flex-col sm:flex-row gap-2 pt-2">
+                    <input type="email" required placeholder="Enter your email address..." class="flex-grow px-4 py-3 bg-stone-950 border border-stone-800 text-sm text-white focus:outline-none focus:border-amber-500/60 rounded-sm">
+                    <button type="submit" class="px-6 py-3 bg-amber-100 text-stone-950 font-semibold text-xs uppercase tracking-widest hover:bg-amber-200 transition-all rounded-sm whitespace-nowrap">
+                        Subscribe
+                    </button>
+                </form>
+                <div id="subscribe-msg" class="hidden text-xs text-emerald-400 pt-2">
+                    Thank you for subscribing!
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ARTICLE MODAL -->
+    <div id="article-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden overflow-y-auto p-4 sm:p-6 lg:p-10 flex justify-center">
+        <div class="bg-botanical-dark border border-purple-900/70 twilight-glow max-w-3xl w-full my-auto rounded-sm p-6 sm:p-10 relative space-y-6 shadow-2xl text-stone-200">
+            <button id="close-modal" class="absolute top-6 right-6 text-stone-400 hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+
+            <div class="space-y-3 pr-8">
+                <div class="mb-6 overflow-hidden rounded-sm border border-stone-800 bg-stone-950">
+                    <img id="modal-image" src="" alt="Christian-themed article artwork" class="w-full max-h-[420px] object-cover">
+                </div>
+                <div class="flex items-center space-x-3 text-xs uppercase tracking-wider text-purple-300">
+                    <span id="modal-category" class="font-semibold">Blog</span>
+                    <span>•</span>
+                    <span id="modal-date" class="text-stone-400">Date</span>
+                    <span>•</span>
+                    <span id="modal-readtime" class="text-stone-400">Read Time</span>
+                </div>
+                <h2 id="modal-title" class="font-serif text-2xl sm:text-3xl text-white leading-tight">
+                    Blog
+                </h2>
+            </div>
+
+            <div id="modal-content" class="article-body prose prose-invert max-w-none text-stone-300 text-sm sm:text-base leading-relaxed space-y-4 font-light border-t border-stone-800 pt-6">
+                <!-- JavaScript inserts article content here -->
+            </div>
+
+            <div class="border-t border-stone-800 pt-6 flex items-center justify-between">
+                <div class="flex items-center space-x-3 text-xs text-stone-500">
+                    <span>Written by <strong class="text-stone-300 font-normal">Rezja Antonia S. Balmes</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-stone-800 bg-stone-950 mt-20 text-stone-500 text-xs py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                <span class="font-cinzel text-white text-sm tracking-wider">REZJA BALMES</span>
+                <span class="hidden sm:inline text-stone-800">|</span>
+                <span>&copy; <span id="year"></span> All Rights Reserved.</span>
+            </div>
+            <div class="flex items-center space-x-6 text-stone-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#blogs" class="hover:text-white transition-colors">Blog</a>
+                <a href="#subscribe" class="hover:text-white transition-colors">Subscribe</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const articles = [
+            {
+                id: 1,
+                title: "Why Theology Still Matters: A Student’s Perspective on Life’s Big Questions",
+                category: "Blog",
+                categoryLabel: "BLOG#1",
+                date: "Oct 1, 2026",
+                readTime: "6 min read",
+                image: "./Christian1.svg",
+                excerpt: "Way back in 12th grade, I was a lector in our school mass monthly. Studying theology means learning to interpret scriptures, discern truth from wisdom, and ask real questions about life.",
+                content: `
+                    <p>
+                        Way back in 12th grade, I was a lector in our school mass monthly. I remember when it was my first time doing that even before the mass started, I kept on practicing and reading the lectionary in the bible. I was worried about what people would think if I misread it that I almost backed out. But that is where I realized that people came there to listen, to pray in peace, and not to judge you. They are there because they have a different purpose and honestly, they will not even notice it because what matters the most is, the content of the readings. And what is more important is the lecture, it helps you more to become knowledgeable about what faith is.
+                    </p>
+                    <p>
+                        Aside from that, I had an experience where I do the readings in our house every time there is a prayer meeting happening, I could say that it left a huge impact in my mind. After months of being a lector, that is what I learned from being that. It deepens my faith, understanding of God, and my relationship to Him, and thinking about beliefs. I understood the difference between spirituality and religiously wherein it inspired me to explore more about finding the meaning of life.
+                    </p>
+                    <p>
+                        Studying theology means you are being disciplined by Him. It means to learn how to use the bible properly, not just by reading it wherein it will help me develop my skills, learn how to interpret the scriptures, learn how to discern truth from wisdom, and stop depending on second-hand answers that will grow my spiritual confidence. It could also help me understand what I believe and why do I believe it, this is where I will see my faith comes from and how I stand firm in it. I will learn how to defend my faith because it gives me clarity and compassion, it will help me explain what I believe without confusion. I will discover how scriptures applies to real life, it helps me deal with the issues of life like I’ll understand more about God’s design for marriage and work, I’ll know how to make decisions on the basis of what He said in His words and I will learn how to help people who are grieving and in pain because it’s seeing what He brings about truth into every corner of my life. And I will start seeing my world through a biblical lens, even though it doesn’t pull me out of the world, but it equips me to impact it. My faith will start to shape how I lead, serve, and live.
+                    </p>
+                    <p>
+                        As a student, theology is worthwhile because this is how you become a critical thinker as most individuals grow up to be an outcome of the beliefs and thoughts that have been told to them through their family or culture. This is not about following anyone, but about questioning anything and everything. This develops your own ethical grounds due to serious thinking and not just imitation of others. It shows that you have your own opinion due to your understanding of things. It does shape us before we even get the chance to think critically, we are born without belief but raised into one as if it is facts. It shows that the way we study about theology, the more we ask ourselves questions about morality, suffering, the purpose of life, and what lies beyond death.
+                    </p>
+                    <p>
+                        Studying here in a Catholic school has given me cultural differences as a student who has not attended one before. The new environment has provided me with a chance to think against my beliefs. Since I have seen the faith of others, it is a blessing to be exposed to a pious, passionate, and welcoming community. For me, faith has changed from something that I know little about to a field of study that I would like to pursue further. To study theology is to question the very core of what you believe and how you practice what you believe. Attending a pious community such as San Beda College Alabang provides the motivation to develop my faith, as well as the opportunity to learn how to properly interpret sacred scripture. So being surrounded by people who believe in God and actively participate in their religion inspires one to do the same. Theology is no longer just another subject to me, but a means of gaining knowledge about my faith and understanding what I am taught.
+                    </p>
+                `
+            },
+            {
+                id: 2,
+                title: "Seeing means believing or believing without seeking",
+                category: "Blog",
+                categoryLabel: "BLOG #2",
+                date: "Oct 1, 2026",
+                readTime: "7 min read",
+                image: "./Christian2.svg",
+                excerpt: "As a Christian, we are always taught to have some faith and just put our trust in God but sometimes that can get a little bit carried away.",
+                content: `
+                    <p>
+                        As a Christian, we are always taught to have some faith and just put our trust in God but sometimes that can get a little bit carried away. And what I mean by that is, sometimes that faith can turn into ignorance. When I first started reading the Bible, there were a lot of things that I did not understand. In fact, there were a lot of things that I felt in my heart that I was having this kind of weird and I feel myself disagreeing with this. And I was scared to disagree with the Bible, because it felt like I was disagreeing with Him. But when you look back at the Gospels, a lot of people questioned God. And he was always open in answering it. But the faith what holds them back. Like when Thomas asked Jesus’ wounds after he rose from the dead.
+                    </p>
+                    <p>
+                        Since I grew up in a family who connects with God. Lumaki rin ako na family-oriented at isa yun sa proud akong ipagmalaki. Naniniwala ako na ganon talaga yung mga pinoy, kasi kahit kami ay ganon din yung ginagagawa namin. Nagsisimba tuwing linggo, o kaya naman tuwing biyernes, nagpapasalamg at nanghihingi ng blessings sakanya. Ganon ang aking naka-sanayan na gawin. Siguro dahil simula nung pagkabata ko, yun na ang tinuturo sakin kaya ganon ako maka asta ngayon. Niminsan kahit sa mga mall ay nagsisimba kami, instead of going to the actual church. Ngunit, naka sanayan namin na kumain tuwing pagkakatapos ng misa bilang silbi ng aming family bonding.
+                    </p>
+                    <p>
+                        Yung pagdidisplay ay naka gawian din ng aking pamilya, kulang nalang bawat sulok ay mayroon pero meron kaming iisang parte ng buhay namin na dun nakalagay lahat. Tuwing araw ng patay o kaawaran ng isa sa mga relatives naming namayapa na, nagsisindi kami ng kandila bilang pagpapakita ng respeto at paalala na nariyan pa rin sila sa puso namin. Isa rin sa mga pinaniniwalaan namin ay yung pagsabi ng tabi tabi po tuwing dudumihan mo yung inaapakan mo. Hindi inexplain to ng nanay ko sakin kung bakit kailangan ganoon ang sistema pero ayun na rin ang aking kinalakihan. Dati tuwing fiesta, kami ay naghahanda para sa okasyon na yon pero habang natanda, hindi na kami masyadong nag-celebrate para roon.
+                    </p>
+                    <p>
+                        Naalala ko tuloy yung lola ko, yung nag alaga sakin nung bata pa ako. Siya talaga ang bukod tangi na nagpalaki sakin kung tutuusin, kasi laging nakayod yung parents ko sa trabaho. Yung lola ko yung nagturo sakin at nagpakilala talaga kay God. Lagi niyang pinapaalala sakin noon na huwag na huwag kong kakalimutan magdasal pagkagising, bago matulog, bago at after kumain. Yun daw kasi ang pinaka importante, bukod sa pagdadasal kung kelan kailangan. Nung una, hindi yun masyado tumatak sa utak ko kasi bata pa ako noon, hindi ko nasusunod yung routine na sinasabi niya, kumbaga nagdadasal lang ako kapag gusto ko. Pero simula nung nawala siya, ang una ko talagang ginawa ay magdasal at tanungin siya kung bakit niya ginawa yun at paano niya nagawa sakin yun. Kasi buong buhay ko, ang aking lola lamang ang cinoconsider ko na kakampi ko bukod kay God pero nung araw na yun, nabawasan yung kakampi ko. Nalungkot at nagtampo ako sakaniya noon kasi kinuha niya yung kakampi ko, yung tagapagtanggol ko sa lahat ng bagay, yung kasama ko sa lahat ng bagay, at yung nagpalaki sakin.
+                    </p>
+                    <p>
+                        I was in 5th grade trying to process my own thoughts. Nung time na yun, naisip ko na baka need ko na maging independent, na kaya iniwan at kinuha siya sakin kasi kailangan ko nang matuto kung paano tumayo mag isa, na hindi na ako para umasa pa sa lola ko. Hindi ako makapaniwala noon, na kaya siguro pinakilala ako ng lola ko sa Panginoon, ay dahil para may kakapitan ako kapag wala na siya. Nung kinuha siya sakin, dun ako nag decide to try and connect with Him even more. Kasi sabi sakin noon ng lola ko, na lagi siyang nariyan ang Panginoon lagi tuwing kailangan mo siya, nakasuporta at nakaalalay sayo sa lahat ng pagkakataon. When I decided to build my relationship to Him, that’s where I truly understand what my lola was trying to or pointing out. And that is where I also realized na yung lagi kong kasama para magsimba, ay nariyan na sa taas, pinapanood ako at ginagabayan kasama ang Panginoon. Also, I’ve accepted the fact that she’s gone already, and maybe it’s the time na makasama na siya sa taas. Kung dati nabanggit ko na labas sa tenga yung mga sinasabi niya sakin, ngayon naman ay retained na siya sa akin. Dun ko rin nalaman na lahat talaga ng tao ay hindi mo makakasama habang buhay, is either iiwan ka dahil gusto lang nila talaga o dahil oras na nila para umalis at hayaan ka na mag isa sa buhay mo. Sabi nga nila, you can’t please everyone.
+                    </p>
+                    <p>
+                        It really helps us shape our identity. It is not only through the religious beliefs of the Church that we become aware of this, but also through our cultural belief in resilience despite hard times, which comes from God and destiny. After considering everything, one thing becomes very clear, and that is that it is required from us to put our beliefs into practice and not just perform the rituals of religion within the four walls of the church. It makes complete sense since the filipino culture revolves around unity, and our spirituality depends upon this connection with our family and community.
+                    </p>
+                `
+            },
+            {
+                id: 3,
+                title: "Young People Abandoning God: Making Our World More Cruel",
+                category: "Blog",
+                categoryLabel: "BLOG #3",
+                date: "Oct 1, 2026",
+                readTime: "7 min read",
+                image: "./Christian3.svg",
+                excerpt: "According to Bishop Ambo David, youth agnosticism and atheism have less to do with morals or spirituality and more to do with common developmental trends in psychology.",
+                content: `
+                    <p>
+                        According to Bishop Ambo David, “youth agnosticism and atheism have less to do with morals or spirituality and more to do with common developmental trends in psychology.” Anxious parents take teenagers who skip church for several years to priests believing they need to be confronted. The youth give the priests a different reason than fear of punishment and the desire to live a noble life. The Bishop provides a more complex answer to describe religion and spirituality as an institutional, learned behavior based on either habit or fear compared to a personal mature faith that is based on an awareness of one’s purpose and the decision to love unreservedly. When a young adult leaves a constricting or a fear-based religious system to seek true goodness and morality, it is more accurate to say that faith is not lost but a routine based on artificial fear is rejected, and true "godlessness" occurs in a lack of love rather than absence of church. Bishop David explains this transition using Freidrich Nietzsche’s metamorphosis and Paul Ricoeur’s naïveté where faith emerges.
+                    </p>
+                    <p>
+                        The main point of the story is the difference ng faith sa religion. Religion is something that was set upon us by our parents, ito yung external structure, mga traditon, at obligasyon na pinasa satin nung bata pa tayo na hindi natin pinili nang kusa at madalas nakabase lang sa takot sa impyerno o sa galit na Diyos. Faith is something that we discover as we grow up, isang malayang pagpili (free choice) na nagsstart kapag narealize natin na ang buhay natin ay may layunin (purpose) at kapag pinili nating mamuhay nang may unconditional love sa kapwa. Sabi ni Bishop Ambo David dun sa statement na "Maybe you lost your religion, not your faith," then proceeds to explain dun sa bata 'yung difference na ung tunay na kawalan ng Diyos (godlessness) ay hindi ang hindi pagpunta sa simbahan, kundi ang kawalan ng pagmamahal, kaya nung sinabi nung bata na gusto lang niyang maging mabuting tao at mamuhay nang may kahulugan, un mismo ung tunay na kahulugan ng pananampalataya.
+                    </p>
+                    <p>
+                        Then he explains 'yung tatlong stages ng pag-unlad ng espiritu (batay kina Nietzsche at Ricoeur) kung saan ang Camel ang simula natin bilang bata na walang katanong tanong na nagpapasangbakal sa mga utos at tradition ng magulang ang Lion ang stage kung saan nagkakaroon ang tao ng lakas ng loob na magtanong, magrebelde, at gibain ang mga lumang paniniwala. at ang Child ang huling antas ng maturity kung saan ang tao ay nagiging payapa, malaya, at nagkakaroon ng "holy indifference" o malalim na respeto sa paniniwala ng iba habang namumuhay sa pagmamahal. So ayun, main point talaga nung story is 'yung difference ng faith at nung religion, at pag nagets mo sya mabilis mo na lang maiintindihan na ang pagkawala ng religion ay part lamang nang paglaki para mahanap mo yung totoong pananampalataya.
+                    </p>
+                    <p>
+                        I’ve read something saying “Respectfully, being agnostic doesn’t make sense to me. You’re aware that there is a God, a heaven, a hell. Yet, you don’t do anything about it. There is one true God, Jesus Christ, and he will reveal himself to you, if you ask him.” They said, it’s a fact that there might be a God, but there also might not be a God. But in a deeper level, Agnostic literally means not knowing. It’s the lack of experience, so they are not aware , they’re distinctly unaware. Being agnostic means you admit you don’t know anything for sure, just like none of us do, and you’re okay with not knowing and don’t care. It’s a life without fear. They said that God only exists in our minds and our lives kasi we need him to, kasi we are very flawed beings and we need this perfect entity, it’s a sort of comfort for us. God either exists or he doesn’t. The possibility of His existence are 0% because a lot of people believes in Science. But isn't agnostic just not knowing? Like, you don’t know for sure? You think there might be a heavan a hell and a God but you don’t know? it makes perfect sense? A faith that has never been questioned, remains an inhereted or a borrowed faith. A faith that survives a honest questioning becomes one's own. A religion that does not allow free thinking and is afraid of being questioned is not a true religion, but rather it is a cult.
+                    </p>
+                    <p>
+                        I'm a Catholic, raised in a conservative and religious family. But as I grow older, I've become inquisitive about things that were indoctrinated to me. I feel validated by Bishop's speech because yes, it doesn't mean I'm dismissing God and it doesn't mean my faith is weak, I just couldn't blindly follow something when there's so much more to learn. As for me, it’s been almost a decade since I belonged to any church. There was even a point in my life when I rejected the idea that there is a God. But throughout the years, I’ve been blessed in so many ways. Whenever I face problems, I don’t necessarily pray, yet deep within me, I remain hopeful that I’ll get through them, and somehow, I always do. Every hope has been realized, and every dream that didn’t happen seemed to redirect me toward something even better. I often wonder why and how, because every time I find myself falling short, the universe provides.
+                    </p>
+                `
+            }
+        ];
+
+        const postsGrid = document.getElementById('posts-grid');
+
+        function renderPosts(posts) {
+            if (!postsGrid) return;
+            if (posts.length === 0) {
+                postsGrid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-stone-500">
+                        <p>No blogs match your search.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            postsGrid.innerHTML = posts.map(post => `
+                <article class="group rounded-sm border border-stone-800 bg-stone-900/60 overflow-hidden flex flex-col justify-between hover:border-amber-400/50 transition-all duration-300">
+                    <div>
+                        <div class="relative overflow-hidden border-b border-stone-800 bg-stone-950">
+                            <img src="${post.image}" alt="Christian-themed artwork for ${post.title}" class="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-[1.035]" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent pointer-events-none"></div>
+                            <span class="absolute bottom-3 left-4 rounded-full border border-amber-200/20 bg-stone-950/65 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-amber-200 backdrop-blur-sm">${post.categoryLabel || post.category}</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <div class="flex items-center justify-between text-[11px] uppercase tracking-wider text-stone-400 font-mono">
+                                <span class="text-purple-300 font-sans font-semibold">${post.categoryLabel || post.category}</span>
+                                <span>${post.date}</span>
+                            </div>
+                            <h3 class="font-serif text-xl text-white group-hover:text-amber-200 transition-colors leading-snug">
+                                ${post.title}
+                            </h3>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light line-clamp-3">
+                                ${post.excerpt}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-5 border-t border-stone-800/80 flex items-center justify-between">
+                        <span class="text-[11px] text-stone-500 font-mono">${post.readTime}</span>
+                        <button onclick="openModal(${post.id})" class="text-xs font-semibold uppercase tracking-widest text-amber-300 hover:text-amber-100 flex items-center space-x-1 transition-colors">
+                            <span>Read</span>
+                            <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        renderPosts(articles);
+
+        const searchBtn = document.getElementById('search-btn');
+        const searchBar = document.getElementById('search-bar');
+        const closeSearch = document.getElementById('close-search');
+        const searchInput = document.getElementById('search-input');
+
+        if (searchBtn && searchBar && closeSearch && searchInput) {
+            searchBtn.addEventListener('click', () => {
+                searchBar.classList.toggle('hidden');
+                if (!searchBar.classList.contains('hidden')) {
+                    searchInput.focus();
+                }
+            });
+
+            closeSearch.addEventListener('click', () => {
+                searchBar.classList.add('hidden');
+                searchInput.value = '';
+                renderPosts(articles);
+            });
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const filtered = articles.filter(post =>
+                    post.title.toLowerCase().includes(query) ||
+                    post.excerpt.toLowerCase().includes(query) ||
+                    post.category.toLowerCase().includes(query) ||
+                    (post.categoryLabel && post.categoryLabel.toLowerCase().includes(query))
+                );
+                renderPosts(filtered);
+            });
+        }
+
+        const modal = document.getElementById('article-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        function openModal(id) {
+            const post = articles.find(p => p.id === id);
+            if (!post || !modal) return;
+
+            document.getElementById('modal-title').textContent = post.title;
+            document.getElementById('modal-category').textContent = post.categoryLabel || post.category;
+            document.getElementById('modal-date').textContent = post.date;
+            document.getElementById('modal-readtime').textContent = post.readTime;
+
+            const modalImage = document.getElementById('modal-image');
+
+            if (modalImage) {
+                modalImage.src = post.image;
+                modalImage.alt = `Christian-themed artwork for ${post.title}`;
+            }
+
+            document.getElementById('modal-content').innerHTML = post.content;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        if (closeModalBtn && modal) {
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        const subscribeForm = document.getElementById('subscribe-form');
+        const subscribeMsg = document.getElementById('subscribe-msg');
+
+        if (subscribeForm && subscribeMsg) {
+            subscribeForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                subscribeMsg.classList.remove('hidden');
+                subscribeForm.reset();
+
+                setTimeout(() => {
+                    subscribeMsg.classList.add('hidden');
+                }, 4000);
+            });
+        }
+
+        const bgAudio = document.getElementById('bg-audio');
+        const bgMusicBtn = document.getElementById('bg-music-btn');
+        const musicIcon = document.getElementById('music-icon');
+        const musicText = document.getElementById('music-text');
+
+        if (bgAudio && bgMusicBtn) {
+            bgMusicBtn.addEventListener('click', () => {
+                if (bgAudio.paused) {
+                    bgAudio.play().catch(e => console.log('Playback error:', e));
+                    musicIcon.className = "fa-solid fa-pause text-amber-300";
+                    musicText.textContent = "Pause Music";
+                } else {
+                    bgAudio.pause();
+                    musicIcon.className = "fa-solid fa-music text-amber-300";
+                    musicText.textContent = "Play Music";
+                }
+            });
+        }
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

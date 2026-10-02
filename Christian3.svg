@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+<defs>
+  <linearGradient id="night" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07091a"/><stop offset=".5" stop-color="#261941"/><stop offset="1" stop-color="#111329"/></linearGradient>
+  <radialGradient id="light"><stop stop-color="#ffe9a8" stop-opacity=".95"/><stop offset="1" stop-color="#dba85d" stop-opacity="0"/></radialGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="14"/></filter>
+</defs>
+<rect width="1200" height="700" fill="url(#night)"/>
+<circle cx="600" cy="365" r="260" fill="url(#light)" filter="url(#soft)"/>
+<circle cx="1010" cy="115" r="52" fill="#f6e9bc" opacity=".88"/>
+<g fill="#fff7d2" opacity=".7"><circle cx="120" cy="120" r="2"/><circle cx="250" cy="220" r="1.5"/><circle cx="930" cy="210" r="1.5"/><circle cx="1080" cy="320" r="2"/><circle cx="420" cy="110" r="1.5"/></g>
+<!-- church -->
+<path d="M285 585 L285 420 L475 420 L475 350 L600 250 L725 350 L725 420 L915 420 L915 585Z" fill="#11101c" stroke="#caa35e" stroke-width="4"/>
+<path d="M540 585 L540 475 Q600 425 660 475 L660 585Z" fill="#080912" stroke="#caa35e" stroke-width="3"/>
+<path d="M600 250 L600 120" stroke="#d8b56c" stroke-width="18" stroke-linecap="round"/>
+<path d="M555 165 L645 165" stroke="#d8b56c" stroke-width="16" stroke-linecap="round"/>
+<g fill="#f5d27b"><rect x="330" y="460" width="34" height="55" rx="3"/><rect x="410" y="460" width="34" height="55" rx="3"/><rect x="756" y="460" width="34" height="55" rx="3"/><rect x="836" y="460" width="34" height="55" rx="3"/></g>
+<text x="600" y="650" text-anchor="middle" fill="#f3dfaa" font-family="Georgia,serif" font-size="27" letter-spacing="4">FAITH • LOVE • COMMUNITY</text>
+</svg>
